@@ -5,7 +5,6 @@ import { load } from "koa-decorator"
 import path from "path"
 
 import config from "./config/index"
-import controller from "./controllers/index"
 
 const app = new Koa()
 app.use(bodyParser())
