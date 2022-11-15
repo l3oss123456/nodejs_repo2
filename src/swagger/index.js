@@ -7,7 +7,7 @@ import path from "path"
 const outputFile = "./swagger_output.json"
 const endpointsFiles = [
   "../controllers/users/users.controller",
-  "../controllers/books/books.controller",
+  "../controllers/albums/albums.controller",
 ]
 const options = {
   openapi: "3.0.3",
@@ -21,11 +21,15 @@ const doc = {
   servers: [
     {
       url: `http://localhost:${config.PORT}/`, // url
-      description: "Local server", // name
+      description: "Local Server", // name
     },
     {
-      url: "http://localhost:4000/todos", // url
-      description: "Sit server", // name
+      url: `http://localhost:${config.PORT}/sit`, // url
+      description: "Sit Server", // name
+    },
+    {
+      url: `http://localhost:${config.PORT}/prod`, // url
+      description: "Prod Server", // name
     },
   ],
   //   host: `localhost:${config.PORT}`,

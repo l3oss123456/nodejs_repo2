@@ -4,31 +4,15 @@ export default {
     email: "john_doe@gmail.com",
     password: "johndoe123",
     role: "subscriber",
+    album_id: 1,
     general_info: {
       name: "name",
       lastname: "lastname",
       age: 20,
     },
-    // age: 29,
-    // parents: {
-    //   father: "Simon Doe",
-    //   mother: "Marie Doe",
-    // },
-    // diplomas: [
-    //   {
-    //     school: "XYZ University",
-    //     year: 2020,
-    //     completed: true,
-    //     internship: {
-    //       hours: 290,
-    //       location: "XYZ Company",
-    //     },
-    //   },
-    // ],
   },
-  addUser: {
-    $name: "Jhon Doe",
-    $age: 29,
-    about: "",
+  album: {
+    name: "album_name",
+    list_song: ["song1", "song2"],
   },
 }

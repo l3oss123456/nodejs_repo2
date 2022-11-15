@@ -1,15 +1,21 @@
-import sequelize from "sequelize"
+import { DataTypes } from "sequelize"
 import db from "../../connection/sequelize"
 
 const modelDefinition = db.define(
   "users",
   {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+      allowNull: false,
+    },
     fullname: {
-      type: sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     email: {
-      type: sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
       unique: true,
       validate: {
@@ -17,16 +23,20 @@ const modelDefinition = db.define(
       },
     },
     password: {
-      type: sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     role: {
-      type: sequelize.ENUM,
+      type: DataTypes.ENUM,
       values: ["admin", "subscriber"],
+      defaultValue: "subscriber",
       allowNull: false,
     },
+    album_id: {
+      type: DataTypes.INTEGER,
+    },
     general_info: {
-      type: sequelize.TEXT,
+      type: DataTypes.TEXT,
       get: function () {
         return JSON.parse(this.getDataValue("general_info"))
       },
@@ -34,27 +44,22 @@ const modelDefinition = db.define(
         this.setDataValue("general_info", JSON.stringify(value))
       },
     },
-    createdAt: {
-      type: sequelize.DATE,
-      allowNull: false,
-    },
-    updatedAt: {
-      type: sequelize.DATE,
-      allowNull: false,
-    },
+    // createdAt: {
+    //   type: DataTypes.DATE,
+    //   allowNull: false,
+    // },
+    // updatedAt: {
+    //   type: DataTypes.DATE,
+    //   allowNull: false,
+    // },
+    // deletedAt: {
+    //   type: DataTypes.DATE,
+    // },
   },
   {
     // timestamps: false,
+    paranoid: true,
   },
 )
 
 export default modelDefinition
-
-// import mongoose from "mongoose"
-
-// const schemaDefinition = new mongoose.Schema({
-//   name: { type: String, required: true },
-//   age: { type: Number },
-//   role: { type: String, enum: ["admin", "subscriber"] },
-// })
-// export default mongoose.model("users", schemaDefinition)

@@ -1,5 +1,5 @@
 import express from "express"
-import { getUser, insertUser, updateUser, deleteUser } from "../../domains/users/index"
+import { getUser, getOneUser, insertUser, updateUser, deleteUser } from "../../domains/users/index"
 import user from "../../models/users/user.model"
 
 const router = express.Router()
@@ -10,15 +10,22 @@ router.get("/user", async (req, res) => {
   #swagger.description = 'get all user'
   #swagger.parameters['$ref'] = [
     '#/parameters/search_val',
+    '#/parameters/sort_field',
+    '#/parameters/sort_order',
     '#/parameters/page', 
-    '#/parameters/per_page'
+    '#/parameters/per_page',
   ]
 */
 
-  const { search_val, page, per_page } = req.query
+  try {
+    const { search_val, page, per_page, sort_field, sort_order } = req.query
 
-  const resp = await getUser(null, search_val, page, per_page)
-  res.send(resp)
+    const resp = await getUser(search_val, page, per_page, sort_field, sort_order)
+    res.send(resp)
+  } catch (error) {
+    console.log(error)
+    return res.status(500).send()
+  }
 })
 router.get("/user/:id", async (req, res) => {
   /*
@@ -28,7 +35,7 @@ router.get("/user/:id", async (req, res) => {
 
   const { id } = req.params
   try {
-    const resp = await getUser(id)
+    const resp = await getOneUser(id)
     res.send(resp)
   } catch (error) {
     console.log(error)
@@ -118,16 +125,3 @@ router.delete("/user/:id", async (req, res) => {
 })
 
 export default router
-
-// import { HttpMethod, route } from "koa-decorator"
-// import { listUser } from "../../domains/users/index"
-
-// @route("/users")
-// class User {
-//   @route("/", HttpMethod.GET)
-//   async getUser(ctx) {
-//     const resp = await listUser()
-//     ctx.body = resp
-//   }
-// }
-// export default User

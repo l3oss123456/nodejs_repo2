@@ -5,7 +5,9 @@ import swaggerUi from "swagger-ui-express"
 // import mysql_connection from "./connection/mysql"
 import db from "./connection/sequelize"
 import userController from "./controllers/users/users.controller"
+import albumController from "./controllers/albums/albums.controller"
 import swaggerDocument from "./swagger/swagger_output.json"
+import "./models/association"
 import config from "./config/index"
 
 const app = express()
@@ -13,15 +15,7 @@ app.use(cors())
 app.use(express.json())
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 app.use(userController)
-
-db.authenticate()
-  .then(() => {
-    console.log("Database connected!")
-  })
-  .catch((err) => {
-    console.log("Error: ", err)
-    return
-  })
+app.use(albumController)
 
 app.listen(config.PORT, () => {
   console.log(`Server is running on port : ${config.PORT}`)

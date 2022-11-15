@@ -15,4 +15,13 @@ const db = new Sequelize(config.DB_NAME, config.DB_USERNAME, config.DB_PASSWORD,
   // },
 })
 
+db.authenticate()
+  .then(() => {
+    console.log("Database connected!")
+  })
+  .catch((err) => {
+    console.log("Error: ", err)
+    return
+  })
+
 export default db

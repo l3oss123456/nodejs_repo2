@@ -7,12 +7,16 @@
   },
   "servers": [
     {
-      "url": "http://localhost:8000/",
-      "description": "Local server"
+      "url": "http://localhost:3000/",
+      "description": "Local Server"
     },
     {
-      "url": "http://localhost:4000/todos",
-      "description": "Sit server"
+      "url": "http://localhost:3000/sit",
+      "description": "Sit Server"
+    },
+    {
+      "url": "http://localhost:3000/prod",
+      "description": "Prod Server"
     }
   ],
   "paths": {
@@ -27,6 +31,12 @@
             "$ref": "#/parameters/search_val"
           },
           {
+            "$ref": "#/parameters/sort_field"
+          },
+          {
+            "$ref": "#/parameters/sort_order"
+          },
+          {
             "$ref": "#/parameters/page"
           },
           {
@@ -36,6 +46,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -149,39 +162,60 @@
         }
       }
     },
-    "/book": {
+    "/album": {
       "get": {
         "tags": [
-          "Book"
+          "Album"
         ],
-        "description": "",
+        "description": "get all album",
+        "parameters": [
+          {
+            "$ref": "#/parameters/search_val"
+          },
+          {
+            "$ref": "#/parameters/sort_field"
+          },
+          {
+            "$ref": "#/parameters/sort_order"
+          },
+          {
+            "$ref": "#/parameters/page"
+          },
+          {
+            "$ref": "#/parameters/per_page"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Album"
+        ],
+        "description": "create album",
         "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
-        }
-      }
-    },
-    "/book/{id}": {
-      "get": {
-        "tags": [
-          "Book"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/album"
+              }
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
           }
         }
       }
@@ -208,6 +242,10 @@
             "type": "string",
             "example": "subscriber"
           },
+          "album_id": {
+            "type": "number",
+            "example": 1
+          },
           "general_info": {
             "type": "object",
             "properties": {
@@ -227,26 +265,24 @@
           }
         }
       },
-      "addUser": {
+      "album": {
         "type": "object",
         "properties": {
           "name": {
             "type": "string",
-            "example": "Jhon Doe"
+            "example": "album_name"
           },
-          "age": {
-            "type": "number",
-            "example": 29
-          },
-          "about": {
-            "type": "string",
-            "example": ""
+          "list_song": {
+            "type": "array",
+            "example": [
+              "song1",
+              "song2"
+            ],
+            "items": {
+              "type": "string"
+            }
           }
-        },
-        "required": [
-          "name",
-          "age"
-        ]
+        }
       }
     },
     "securitySchemes": {
@@ -272,6 +308,30 @@
       "type": "string",
       "in": "query",
       "description": "ค่าที่ต้องการ search"
+    },
+    "sort_field": {
+      "name": "sort_field",
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "required": true
+        }
+      },
+      "in": "query",
+      "description": "ชื่อ field ที่ต้องการ sort (รองรับทุก field)"
+    },
+    "sort_order": {
+      "name": "sort_order",
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "required": true
+        }
+      },
+      "in": "query",
+      "description": "1 น้อยไปมาก, -1 มากไปน้อย (รองรับทุก field เป็น stable sort จำนวนที่ใส่ต้องตรงกับจำนวน sort_field)"
     },
     "page": {
       "name": "page",
