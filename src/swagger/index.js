@@ -1,14 +1,11 @@
 import swaggerAutogen from "swagger-autogen"
-import config from "../config"
-import swaggerBodyModel from "../models/swagger/body_model"
-import swaggerParamsModel from "../models/swagger/params_model"
+import config from "../Config"
+import swaggerBodyModel from "../models/swagger/BodyModel"
+import swaggerParamsModel from "../models/swagger/ParamsModel"
 import path from "path"
 
-const outputFile = "./swagger_output.json"
-const endpointsFiles = [
-  "../controllers/users/users.controller",
-  "../controllers/albums/albums.controller",
-]
+const outputFile = "./SwaggerOutput.json"
+const endpointsFiles = ["../Router/User", "../Router/Album"]
 const options = {
   openapi: "3.0.3",
 }
@@ -20,19 +17,19 @@ const doc = {
   },
   servers: [
     {
-      url: `http://localhost:${config.PORT}/`, // url
+      url: `http://localhost:${config.port}/`, // url
       description: "Local Server", // name
     },
     {
-      url: `http://localhost:${config.PORT}/sit`, // url
+      url: `http://localhost:${config.port}/sit`, // url
       description: "Sit Server", // name
     },
     {
-      url: `http://localhost:${config.PORT}/prod`, // url
+      url: `http://localhost:${config.port}/prod`, // url
       description: "Prod Server", // name
     },
   ],
-  //   host: `localhost:${config.PORT}`,
+  //   host: `localhost:${config.port}`,
   //   basePath: "/",
   //   schemes: ["http", "https"],
   //   consumes: ["application/json"],

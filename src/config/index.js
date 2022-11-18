@@ -1,13 +1,13 @@
 import "dotenv/config"
 
 export default {
-  PORT: process.env.PORT || 8000,
+  port: process.env.PORT || 8000,
 
   //========== db connection config ============
-  DB_HOST: process.env.DB_HOST,
-  DB_USERNAME: process.env.DB_USERNAME,
-  DB_PASSWORD: process.env.DB_PASSWORD,
-  DB_NAME: process.env.DB_NAME,
-  DB_PORT: process.env.DB_PORT,
+  db_host: process.env.DB_HOST || `localhost`,
+  db_username: process.env.DB_USERNAME || `root`,
+  db_password: process.env.DB_PASSWORD || `root`,
+  db_name: process.env.DB_NAME || `mysql_nodejs`,
+  db_port: process.env.DB_PORT || 8889,
   //=============================================
 }

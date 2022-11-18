@@ -1,21 +1,21 @@
-import response from "../response/client"
+import response from "../Response/Client"
 import * as R from "ramda"
-import { toSequelizeSortOrder } from "./helper"
-import albumModel from "../models/albums/albums.model"
-import userModel from "../models/users/user.model"
+import { toSequelizeSortOrder } from "./Helper"
+// import userModel from "../Models/Db/Users/User.Model"
+// import albumModel from "../Models/Db/Albums/Albums.Model"
 
 export const countDocs = async ({ model, filter }) => {
   return await model.count(filter)
 }
 export const findAll = async ({
-  model,
-  filter,
-  exclude_field,
-  join_table_statement,
-  page,
-  per_page,
-  sort_field,
-  sort_order,
+  model = null,
+  filter = {},
+  exclude_field = [],
+  join_table_statement = [],
+  page = 1,
+  per_page = 10,
+  sort_field = [],
+  sort_order = [],
 }) => {
   const obj = await model.findAll({
     ...filter,

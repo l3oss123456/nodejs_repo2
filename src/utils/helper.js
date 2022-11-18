@@ -1,12 +1,13 @@
 import * as R from "ramda"
-import response from "../response/client"
+import response from "../Response/Client"
 
 export const toSequelizeSortOrder = (sort_field, sort_order) => {
   if (R.isNil(sort_field) && R.isNil(sort_order)) {
     return []
   }
   if (R.isEmpty(sort_field) || R.isEmpty(sort_order)) {
-    throw response.BAD_REQUEST("empty form in sort_field or sort_order")
+    // throw response.BAD_REQUEST("empty form in sort_field or sort_order")
+    return []
   } else {
     let order_sequence = []
     if (typeof sort_field === "string" && typeof sort_order === "string") {

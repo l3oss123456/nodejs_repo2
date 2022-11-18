@@ -1,11 +1,11 @@
 import { Sequelize } from "sequelize"
-import config from "../config"
+import config from "../Config"
 
-const db = new Sequelize(config.DB_NAME, config.DB_USERNAME, config.DB_PASSWORD, {
+const db = new Sequelize(config.db_name, config.db_username, config.db_password, {
   host: "localhost",
   dialect: "mysql",
   operatorsAliases: false,
-  port: config.DB_PORT,
+  port: config.db_port,
 
   // pool: {
   //   max: 5,
