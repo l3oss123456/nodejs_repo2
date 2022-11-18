@@ -1,7 +1,7 @@
 import { Op } from "sequelize"
 import * as R from "ramda"
-import userModel from "../../Models/Db/Users/User.Model"
-import albumModel from "../../Models/Db/Albums/Albums.Model"
+import userModel from "../../Models/Db/User.Model"
+import albumModel from "../../Models/Db/Album.Model."
 import { findAll } from "../../Utils/Domains"
 
 export default async function getUser(
@@ -48,6 +48,9 @@ export default async function getUser(
     })
     return resp
   } catch (error) {
-    return error
+    return {
+      status: -1,
+      result: error,
+    }
   }
 }

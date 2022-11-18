@@ -1,5 +1,5 @@
 import * as R from "ramda"
-import response from "../Response/Client"
+import response from "../Response/Basic"
 
 export const toSequelizeSortOrder = (sort_field, sort_order) => {
   if (R.isNil(sort_field) && R.isNil(sort_order)) {
@@ -22,7 +22,8 @@ export const toSequelizeSortOrder = (sort_field, sort_order) => {
       (R.isNil(sort_field) && !R.isNil(sort_order)) ||
       (!R.isNil(sort_field) && R.isNil(sort_order))
     ) {
-      throw response.BAD_REQUEST(`size of sort_field and sort_order doesn't match`)
+      // throw response.BAD_REQUEST(`size of sort_field and sort_order doesn't match`)
+      return {}
     } else {
       if (sort_field.length === sort_order.length) {
         sort_order.forEach((order, index) => {
@@ -31,7 +32,8 @@ export const toSequelizeSortOrder = (sort_field, sort_order) => {
         })
         return [...order_sequence]
       } else {
-        throw response.BAD_REQUEST(`size of sort_field and sort_order doesn't match`)
+        // throw response.BAD_REQUEST(`size of sort_field and sort_order doesn't match`)
+        return {}
       }
     }
   }

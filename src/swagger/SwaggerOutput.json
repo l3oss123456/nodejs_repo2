@@ -25,7 +25,8 @@
         "tags": [
           "User"
         ],
-        "description": "get all user",
+        "summary": "get all user",
+        "description": "แสดงข้อมูล user ทั้งหมด",
         "parameters": [
           {
             "$ref": "#/parameters/search_val"
@@ -56,6 +57,7 @@
         "tags": [
           "User"
         ],
+        "summary": "add new user",
         "description": "create user",
         "parameters": [],
         "responses": {
@@ -83,6 +85,7 @@
         "tags": [
           "User"
         ],
+        "summary": "get user by id",
         "description": "get user by id",
         "parameters": [
           {
@@ -107,6 +110,7 @@
         "tags": [
           "User"
         ],
+        "summary": "update user",
         "description": "update user",
         "parameters": [
           {
@@ -141,6 +145,7 @@
         "tags": [
           "User"
         ],
+        "summary": "delete user",
         "description": "delete user",
         "parameters": [
           {

@@ -1,5 +1,5 @@
-import albumModel from "../Albums/Albums.Model"
-import userModel from "../Users/User.Model"
+import albumModel from "../Album.Model."
+import userModel from "../User.Model"
 
 userModel.hasMany(albumModel, {
   foreignKey: `id`,

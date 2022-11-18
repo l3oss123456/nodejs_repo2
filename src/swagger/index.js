@@ -5,7 +5,7 @@ import swaggerParamsModel from "../models/swagger/ParamsModel"
 import path from "path"
 
 const outputFile = "./SwaggerOutput.json"
-const endpointsFiles = ["../Router/User", "../Router/Album"]
+const endpointsFiles = ["../Routes/User.Routes.js", "../Routes/Album.Routes.js"]
 const options = {
   openapi: "3.0.3",
 }

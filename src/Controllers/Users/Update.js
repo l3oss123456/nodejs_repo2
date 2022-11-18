@@ -1,4 +1,4 @@
-import user from "../../Models/Db/Users/User.Model"
+import user from "../../Models/Db/User.Model"
 import * as R from "ramda"
 import { findAndUpdate } from "../../Utils/Domains"
 
