@@ -10,6 +10,7 @@ import config from "./Config/index"
 const app = express()
 app.use(cors())
 app.use(express.json())
+
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 const routes_directory = require("path").resolve(__dirname) + `/Routes/`

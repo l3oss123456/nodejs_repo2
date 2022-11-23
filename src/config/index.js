@@ -10,4 +10,9 @@ export default {
   db_name: process.env.DB_NAME || `mysql_nodejs`,
   db_port: process.env.DB_PORT || 8889,
   //=============================================
+
+  //========== token ============
+  token_secret_key:
+    process.env.TOKEN_SECRET_KEY || require("crypto").randomBytes(64).toString("hex"),
+  //=============================================
 }

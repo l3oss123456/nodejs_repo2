@@ -1,6 +1,8 @@
-import response from "../Response/Basic"
+import jwt from "jsonwebtoken"
 import * as R from "ramda"
+import response from "../Response/Basic"
 import { toSequelizeSortOrder } from "./Helper"
+import Config from "../Config"
 // import userModel from "../Models/Db/Users/User.Model"
 // import albumModel from "../Models/Db/Albums/Albums.Model"
 
@@ -112,4 +114,22 @@ export const findAndDelete = async ({ model, filter }) => {
     status: 1,
     result: "Delete successfully!",
   }
+}
+export const jwtEncode = ({
+  data = {},
+  secret_key = Config.token_secret_key,
+  exp = "10h",
+  algorithm = "RS256",
+}) => {
+  return jwt.sign(
+    {
+      data: data,
+    },
+    secret_key,
+    { expiresIn: exp },
+    { algorithm: algorithm },
+  )
+}
+export const jwtDecode = ({ token = "", secret_key = Config.token_secret_key }) => {
+  return jwt.verify(token, secret_key)
 }

@@ -1,4 +1,8 @@
 export default {
+  login: {
+    username: "test",
+    password: "1234",
+  },
   user: {
     fullname: "John Doe",
     email: "john_doe@gmail.com",

@@ -1,22 +1,27 @@
 import express from "express"
 import { getUser, getOneUser, insertUser, updateUser, deleteUser } from "../Controllers/Users"
 import response from "../Response/Basic"
+import authenticateToken from "../Middlewares/Authorization"
 
 const router = express.Router()
 
-router.get("/user", async (req, res) => {
+router.get("/user", authenticateToken, async (req, res) => {
   /*
-  #swagger.tags = ['User']
-  #swagger.summary = 'get all user'
-  #swagger.description = 'แสดงข้อมูล user ทั้งหมด'
-  #swagger.parameters['$ref'] = [
-    '#/parameters/search_val',
-    '#/parameters/sort_field',
-    '#/parameters/sort_order',
-    '#/parameters/page', 
-    '#/parameters/per_page',
-  ]
-*/
+    #swagger.tags = ['User']
+    #swagger.summary = 'get all user'
+    #swagger.description = 'แสดงข้อมูล user ทั้งหมด'
+    #swagger.parameters['$ref'] = [
+      '#/parameters/search_val',
+      '#/parameters/sort_field',
+      '#/parameters/sort_order',
+      '#/parameters/page', 
+      '#/parameters/per_page',
+    ]
+    #swagger.security = [{"bearerAuth": []}] 
+  */
+
+  // console.log("reqreqreqreqreq;", req.route)
+  // console.log(`req.headers["authorization"]`, req.headers["authorization"])
 
   try {
     const { search_val, page, per_page, sort_field, sort_order } = req.query
