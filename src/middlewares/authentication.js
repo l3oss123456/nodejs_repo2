@@ -5,8 +5,8 @@ import { JwtDecode } from "../utils/domains"
 import response from "../utils/responseHandler"
 
 const AuthenticateToken = (req, res, next) => {
-  const authHeader = req.headers["authorization"]
-  const token = authHeader && authHeader.split(" ")[1]
+  const auth_header = req.headers["authorization"]
+  const token = auth_header && auth_header.split(" ")[1]
 
   if (R.isNil(token)) return res.send(response.UNAUTHORIZED({}))
 
