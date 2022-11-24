@@ -1,15 +1,14 @@
 import jwt from "jsonwebtoken"
 import * as R from "ramda"
-import response from "../Response/Basic"
-import { toSequelizeSortOrder } from "./Helper"
-import Config from "../Config"
+import { ToSequelizeSortOrder } from "./helpers"
+import Config from "../configs"
 // import userModel from "../Models/Db/Users/User.Model"
 // import albumModel from "../Models/Db/Albums/Albums.Model"
 
-export const countDocs = async ({ model, filter }) => {
+export const CountDocs = async ({ model, filter }) => {
   return await model.count(filter)
 }
-export const findAll = async ({
+export const FindAll = async ({
   model = null,
   filter = {},
   exclude_field = [],
@@ -25,7 +24,7 @@ export const findAll = async ({
       exclude: [...exclude_field, "deletedAt"],
     },
     include: join_table_statement,
-    order: toSequelizeSortOrder(sort_field, sort_order),
+    order: ToSequelizeSortOrder(sort_field, sort_order),
     offset: parseInt(page) - 1,
     limit: parseInt(per_page),
   })
@@ -41,11 +40,11 @@ export const findAll = async ({
       data: obj,
       page: parseInt(page),
       per_page: parseInt(per_page),
-      total: await countDocs({ model: model, filter: filter }),
+      total: await CountDocs({ model: model, filter: filter }),
     },
   }
 }
-export const findOne = async ({
+export const FindOne = async ({
   model,
   filter,
   exclude_field = [],
@@ -73,7 +72,7 @@ export const findOne = async ({
     },
   }
 }
-export const findAndCreate = async ({ model, filter, data }) => {
+export const FindAndCreate = async ({ model, filter, data }) => {
   let obj = await model.findOne({ ...filter })
   if (obj) {
     return {
@@ -87,7 +86,7 @@ export const findAndCreate = async ({ model, filter, data }) => {
     result: "Create successfully",
   }
 }
-export const findAndUpdate = async ({ model, filter, data }) => {
+export const FindAndUpdate = async ({ model, filter, data }) => {
   let obj = await model.findOne({ ...filter })
   if (!obj) {
     return {
@@ -101,7 +100,7 @@ export const findAndUpdate = async ({ model, filter, data }) => {
     result: "Update successfully!",
   }
 }
-export const findAndDelete = async ({ model, filter }) => {
+export const FindAndDelete = async ({ model, filter }) => {
   let obj = await model.findOne({ ...filter })
   if (!obj) {
     return {
@@ -115,21 +114,14 @@ export const findAndDelete = async ({ model, filter }) => {
     result: "Delete successfully!",
   }
 }
-export const jwtEncode = ({
+export const JwtEncode = ({
   data = {},
   secret_key = Config.token_secret_key,
   exp = "10h",
   algorithm = "RS256",
 }) => {
-  return jwt.sign(
-    {
-      data: data,
-    },
-    secret_key,
-    { expiresIn: exp },
-    { algorithm: algorithm },
-  )
+  return jwt.sign(data, secret_key, { expiresIn: exp }, { algorithm: algorithm })
 }
-export const jwtDecode = ({ token = "", secret_key = Config.token_secret_key }) => {
+export const JwtDecode = ({ token = "", secret_key = Config.token_secret_key }) => {
   return jwt.verify(token, secret_key)
 }

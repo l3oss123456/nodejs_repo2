@@ -1,9 +1,9 @@
 import { Op } from "sequelize"
 import * as R from "ramda"
-import model from "../../Models/Db/Album.Model."
-import { findAll } from "../../Utils/Domains"
+import album_model from "../../models/album.model"
+import { FindAll } from "../../Utils/Domains"
 
-export default async function getAlbum(
+export default async function GetAlbum(
   search_val = "",
   page = 1,
   per_page = 1,
@@ -14,8 +14,8 @@ export default async function getAlbum(
     // let exclude_field = ["id"]
     let exclude_field = []
     let join_table_statement = []
-    const resp = await findAll({
-      model: model,
+    const resp = await FindAll({
+      model: album_model,
       filter: {
         where: {
           [Op.or]: {

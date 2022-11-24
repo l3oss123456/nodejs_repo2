@@ -1,12 +1,12 @@
-import user from "../../Models/Db/User.Model"
 import * as R from "ramda"
-import { findAndDelete } from "../../Utils/Domains"
+import user_model from "../../models/user.model"
+import { FindAndDelete } from "../../utils/domains"
 
-export default async function deleteUser(id = null) {
+export default async function DeleteUser(id = null) {
   try {
     if (!R.isNil(id)) {
-      const resp = await findAndDelete({
-        model: user,
+      const resp = await FindAndDelete({
+        model: user_model,
         filter: {
           where: {
             id: id,

@@ -1,11 +1,11 @@
 import * as R from "ramda"
-import model from "../../Models/Db/Album.Model."
-import { findAndCreate } from "../../Utils/Domains"
+import album_model from "../../models/album.model"
+import { FindAndCreate } from "../../utils/domains"
 
-export default async function insertAlbum(data) {
+export default async function InsertAlbum(data) {
   try {
-    const resp = await findAndCreate({
-      model: model,
+    const resp = await FindAndCreate({
+      model: album_model,
       filter: {
         where: {
           name: data.name,

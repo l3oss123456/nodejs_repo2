@@ -1,19 +1,19 @@
 import { Op } from "sequelize"
 import * as R from "ramda"
-import user from "../../Models/Db/User.Model"
-import { findOne } from "../../Utils/Domains"
-import albumModel from "../../Models/Db/Album.Model."
+import user_model from "../../models/user.model"
+import { FindOne } from "../../utils/domains"
+import album_model from "../../models/album.model"
 
-export default async function getOneUser(id = null, search_val = "", page = 1, per_page = 1) {
+export default async function GetOneUser(id = null, search_val = "", page = 1, per_page = 1) {
   try {
     let exclude_field = []
     let join_table_statement = [
       {
-        model: albumModel,
+        model: album_model,
       },
     ]
-    const resp = await findOne({
-      model: user,
+    const resp = await FindOne({
+      model: user_model,
       filter: {
         where: {
           id: id,

@@ -1,10 +1,10 @@
 import { Op } from "sequelize"
 import * as R from "ramda"
-import userModel from "../../Models/Db/User.Model"
-import albumModel from "../../Models/Db/Album.Model."
-import { findAll } from "../../Utils/Domains"
+import user_model from "../../models/user.model"
+import album_model from "../../models/album.model"
+import { FindAll } from "../../utils/domains"
 
-export default async function getUser(
+export default async function GetUser(
   search_val = "",
   page = 1,
   per_page = 1,
@@ -15,12 +15,12 @@ export default async function getUser(
     let exclude_field = []
     let join_table_statement = [
       {
-        model: albumModel,
+        model: album_model,
       },
     ]
 
-    const resp = await findAll({
-      model: userModel,
+    const resp = await FindAll({
+      model: user_model,
       exclude_field: exclude_field,
       join_table_statement: join_table_statement,
       page: page,

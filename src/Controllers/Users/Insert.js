@@ -1,11 +1,11 @@
-import user from "../../Models/Db/User.Model"
 import * as R from "ramda"
-import { findAndCreate } from "../../Utils/Domains"
+import user_model from "../../models/user.model"
+import { FindAndCreate } from "../../utils/domains"
 
-export default async function insertUser(data) {
+export default async function InsertUser(data) {
   try {
-    const resp = await findAndCreate({
-      model: user,
+    const resp = await FindAndCreate({
+      model: user_model,
       filter: {
         where: {
           email: data.email,

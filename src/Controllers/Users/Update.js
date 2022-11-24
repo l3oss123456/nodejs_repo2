@@ -1,12 +1,12 @@
-import user from "../../Models/Db/User.Model"
 import * as R from "ramda"
-import { findAndUpdate } from "../../Utils/Domains"
+import user_model from "../../models/user.model"
+import { FindAndUpdate } from "../../utils/domains"
 
-export default async function updateUser(id = null, data) {
+export default async function UpdateUser(id = null, data) {
   try {
     if (!R.isNil(id)) {
-      const resp = await findAndUpdate({
-        model: user,
+      const resp = await FindAndUpdate({
+        model: user_model,
         filter: {
           where: {
             id: id,

@@ -1,7 +1,7 @@
-import { jwtEncode } from "../../Utils/Domains"
+import { JwtEncode } from "../../Utils/Domains"
 
-export default async function login(username = "", password = "") {
-  return jwtEncode({
+export default async function Login(username = "", password = "") {
+  return JwtEncode({
     data: {
       username: username,
       password: password,
