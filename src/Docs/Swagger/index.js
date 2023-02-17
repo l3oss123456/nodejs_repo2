@@ -6,9 +6,9 @@ import path from "path"
 
 const outputFile = "./swaggerOutput.json"
 const endpointsFiles = [
-  "../../routes/auth.route",
-  "../../routes/user.route",
-  "../../routes/album.route",
+  "../../Routes/auth.route",
+  "../../Routes/user.route",
+  "../../Routes/album.route",
 ]
 const options = {
   openapi: "3.0.3",
