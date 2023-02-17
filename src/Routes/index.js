@@ -1,6 +1,6 @@
 import fs from "fs"
 import swaggerUi from "swagger-ui-express"
-import swaggerDocument from "../Docs/Swagger/SwaggerOutput.json"
+import swaggerDocument from "../Docs/Swagger/swaggerOutput.json"
 
 const InitialRoute = (app) => {
   app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument))
