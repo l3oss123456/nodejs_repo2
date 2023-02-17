@@ -1,10 +1,10 @@
 import express from "express"
 import cors from "cors"
 import fs from "fs"
-import "./configs/connection/sequelize"
-import "./models/association"
-import InitialRoute from "./routes"
-import config from "./configs"
+import "./Configs/Connection/sequelize"
+import "./Models/Association"
+import InitialRoute from "./Routes"
+import config from "./Configs"
 
 const app = express()
 app.use(cors())

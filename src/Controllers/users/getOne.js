@@ -1,8 +1,8 @@
 import { Op } from "sequelize"
 import * as R from "ramda"
-import user_model from "../../models/user.model"
-import { FindOne } from "../../utils/domains"
-import album_model from "../../models/album.model"
+import user_model from "../../Models/user.model"
+import { FindOne } from "../../Utils/domains"
+import album_model from "../../Models/album.model"
 
 export default async function GetOneUser(id = null, search_val = "", page = 1, per_page = 1) {
   try {

@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize"
-import db from "../configs/connection/sequelize"
+import db from "../Configs/Connection/sequelize"
 
 const modelDefinition = db.define(
   "albums",

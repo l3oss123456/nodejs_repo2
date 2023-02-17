@@ -2,7 +2,7 @@ import { Sequelize } from "sequelize"
 import config from ".."
 
 const db = new Sequelize(config.db_name, config.db_username, config.db_password, {
-  host: "localhost",
+  host: config.db_host,
   dialect: "mysql",
   operatorsAliases: false,
   port: config.db_port,

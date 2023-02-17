@@ -1,4 +1,4 @@
-import { JwtEncode } from "../../Utils/Domains"
+import { JwtEncode } from "../../Utils/domains"
 
 export default async function Login(username = "", password = "") {
   return JwtEncode({

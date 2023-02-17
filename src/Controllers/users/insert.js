@@ -1,6 +1,6 @@
 import * as R from "ramda"
-import user_model from "../../models/user.model"
-import { FindAndCreate } from "../../utils/domains"
+import user_model from "../../Models/user.model"
+import { FindAndCreate } from "../../Utils/domains"
 
 export default async function InsertUser(data) {
   try {

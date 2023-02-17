@@ -1,7 +1,7 @@
 import swaggerAutogen from "swagger-autogen"
-import config from "../../configs"
-import swaggerBodyModel from "./models/bodyModel"
-import swaggerParamsModel from "./models/paramsModel"
+import config from "../../Configs"
+import swaggerBodyModel from "./Models/bodyModel"
+import swaggerParamsModel from "./Models/paramsModel"
 import path from "path"
 
 const outputFile = "./swaggerOutput.json"

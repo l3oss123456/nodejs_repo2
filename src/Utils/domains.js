@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken"
 import * as R from "ramda"
 import { ToSequelizeSortOrder } from "./helpers"
-import Config from "../configs"
+import Config from "../Configs"
 // import userModel from "../Models/Db/Users/User.Model"
 // import albumModel from "../Models/Db/Albums/Albums.Model"
 

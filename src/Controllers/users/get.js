@@ -1,8 +1,8 @@
 import { Op } from "sequelize"
 import * as R from "ramda"
-import user_model from "../../models/user.model"
-import album_model from "../../models/album.model"
-import { FindAll } from "../../utils/domains"
+import user_model from "../../Models/user.model"
+import album_model from "../../Models/album.model"
+import { FindAll } from "../../Utils/domains"
 
 export default async function GetUser(
   search_val = "",

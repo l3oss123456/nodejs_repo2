@@ -1,8 +1,8 @@
 import jwt from "jsonwebtoken"
 import * as R from "ramda"
-import config from "../configs"
-import { JwtDecode } from "../utils/domains"
-import response from "../utils/responseHandler"
+import config from "../Configs"
+import { JwtDecode } from "../Utils/domains"
+import response from "../Utils/responseHandler"
 
 const AuthenticateToken = (req, res, next) => {
   const auth_header = req.headers["authorization"]

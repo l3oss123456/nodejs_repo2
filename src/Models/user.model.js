@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize"
-import db from "../configs/connection/sequelize"
-import albumModel from "../models/album.model.js"
+import db from "../Configs/Connection/sequelize"
+import albumModel from "./album.model.js"
 
 const modelDefinition = db.define(
   "users",

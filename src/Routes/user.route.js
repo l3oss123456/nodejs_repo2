@@ -1,7 +1,7 @@
 import express from "express"
-import { GetUser, GetOneUser, InsertUser, UpdateUser, DeleteUser } from "../controllers/users"
-import AuthenticateToken from "../middlewares/authentication"
-import response from "../utils/responseHandler"
+import { GetUser, GetOneUser, InsertUser, UpdateUser, DeleteUser } from "../Controllers/users"
+import AuthenticateToken from "../Middlewares/Authentication"
+import response from "../Utils/responseHandler"
 
 const router = express.Router()
 
