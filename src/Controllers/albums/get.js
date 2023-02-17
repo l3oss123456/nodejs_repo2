@@ -1,7 +1,7 @@
 import { Op } from "sequelize"
 import * as R from "ramda"
-import album_model from "../../models/album.model"
-import { FindAll } from "../../Utils/Domains"
+import album_model from "../../Models/album.model"
+import { FindAll } from "../../Utils/domains"
 
 export default async function GetAlbum(
   search_val = "",

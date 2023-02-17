@@ -1,6 +1,6 @@
 import * as R from "ramda"
-import album_model from "../../models/album.model"
-import { FindAndCreate } from "../../utils/domains"
+import album_model from "../../Models/album.model"
+import { FindAndCreate } from "../../Utils/domains"
 
 export default async function InsertAlbum(data) {
   try {

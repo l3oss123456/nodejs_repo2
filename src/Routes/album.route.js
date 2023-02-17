@@ -1,6 +1,6 @@
 import express from "express"
-import { GetAlbum, InsertAlbum } from "../Controllers/Albums"
-import AuthenticateToken from "../middlewares/authentication"
+import { GetAlbum, InsertAlbum } from "../Controllers/albums"
+import AuthenticateToken from "../Middlewares/authentication"
 
 const router = express.Router()
 
